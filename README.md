@@ -11,7 +11,7 @@ This calculator allows to calculate the nutrient amount (in grams) needed and pH
 This game was made in Visual Studio Code using Python. It uses DearPyGui library.
 
 ## Installation & Running
-1. **Download the Source:** Go to the "Releases" section and download the source zip folder from the latest update.
+1. **Download the Source:** Go to [Releases](https://github.com/NeilM5/Hydroponics-Calculator/releases) section and download the source zip folder from the latest update.
 
 2. **Unzip Folder:** Extract the zip folder to your preffered location.
 
