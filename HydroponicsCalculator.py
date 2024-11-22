@@ -1,7 +1,7 @@
 import dearpygui.dearpygui as dpg
 
 dpg.create_context()
-dpg.create_viewport(title="Hydroponics Calculator", width=600, height=500, resizable=False)
+dpg.create_viewport(title="Hydroponics Calculator", width=600, height=500, resizable=True)
 
 plant_type_dict = {
     # [Target EC, Target pH]
@@ -11,7 +11,7 @@ plant_type_dict = {
 }
 
 water_type_dict = {
-    "Tap Water": 7.5, 
+    "Tap Water": 7.5,
     "RO": 6.3, 
     "Rainwater": 5.8,
 }
@@ -24,7 +24,7 @@ def nutrientQuant():
     ec_inc = tg_ec - bs_ec
     nutri_quantity = (ec_inc * res_size) / 0.1
 
-    dpg.add_text(f"{nutri_quantity} grams", parent="OPTN")
+    dpg.add_text(f"{round(nutri_quantity, 1)} grams", parent="OPTN")
 
 def pHLevel():
     res_size = dpg.get_value("RS")
@@ -65,7 +65,7 @@ with dpg.window(label="Input", tag="INP", width=250, height=440, no_resize=True,
     # Plant Inputs
     dpg.add_combo(items=list(plant_type_dict.keys()), label="Plant Type", width=100, callback=setPlantValues)
     dpg.add_combo(items=("Seedling", "Vegetative", "Flowering"), label="Growth Stage", width=100)
-    dpg.add_input_int(label="Plant Count", min_value=0, min_clamped=True, width=100, default_value=0)
+    dpg.add_input_int(label="Plant Count", min_value=0, min_clamped=True, width=100, step=0, default_value=0)
 
     # Unholy amount of spacing
     dpg.add_spacer()
@@ -74,13 +74,13 @@ with dpg.window(label="Input", tag="INP", width=250, height=440, no_resize=True,
     dpg.add_spacer()
 
     # Water Input
-    dpg.add_input_int(label="Reservoir Size (L)", tag="RS", min_value=0, min_clamped=True, width=100, default_value=0)
-    dpg.add_input_float(label= "Target (EC)", tag="TEC", min_value = 0, min_clamped=True, format="%.1f", width=100, default_value=0)
-    dpg.add_input_float(label= "Base (EC)", tag="BEC", min_value = 0, min_clamped=True, format="%.1f", width=100, default_value=0)
+    dpg.add_input_int(label="Resevoir Size (L)", tag="RS", min_value=0, min_clamped=True, width=100, step=0, default_value=0)
+    dpg.add_input_float(label= "Target (EC)", tag="TEC", min_value = 0, min_clamped=True, format="%.1f", width=100, step=0, default_value=0)
+    dpg.add_input_float(label= "Base (EC)", tag="BEC", min_value = 0, min_clamped=True, format="%.1f", width=100, step=0, default_value=0)
     dpg.add_combo(items=list(water_type_dict.keys()), label="Water Type", width=100, callback=setWaterValues)
-    dpg.add_input_float(label="Current pH", tag="CPH", min_value=0, min_clamped=True, max_value=14, max_clamped=True, format="%.1f", width=100)
-    dpg.add_input_float(label="Target pH", tag="TPH", min_value=0, min_clamped=True, max_value=14, max_clamped=True, format="%.1f", width=100)
-    dpg.add_input_float(label="Strength Factor", tag="SF", min_value=0, min_clamped=True, max_value=14, max_clamped=True, format="%.1f", width=100)
+    dpg.add_input_float(label="Current pH", tag="CPH", min_value=0, min_clamped=True, max_value=14, max_clamped=True, step=0, format="%.1f", width=100)
+    dpg.add_input_float(label="Target pH", tag="TPH", min_value=0, min_clamped=True, max_value=14, max_clamped=True, step=0, format="%.1f", width=100)
+    dpg.add_input_float(label="Strength Factor", tag="SF", min_value=0, min_clamped=True, max_value=14, max_clamped=True, step=0, format="%.1f", width=100)
 
 with dpg.window(label="Output", tag="OPT", width=305, height=280, no_resize=True, no_collapse=True, no_move=True, no_close=True):
     with dpg.child_window(width=140, height=150, pos=(10, 30), tag="OPTN"):
