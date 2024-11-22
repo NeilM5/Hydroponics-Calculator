@@ -68,10 +68,10 @@ with dpg.window(label="Input", tag="INP", width=250, height=440, no_resize=True,
     dpg.add_input_int(label="Plant Count", min_value=0, min_clamped=True, width=100, default_value=0)
 
     # Unholy amount of spacing
-    dpg.add_spacing()
-    dpg.add_spacing()
-    dpg.add_spacing()
-    dpg.add_spacing()
+    dpg.add_spacer()
+    dpg.add_spacer()
+    dpg.add_spacer()
+    dpg.add_spacer()
 
     # Water Input
     dpg.add_input_int(label="Resevoir Size", tag="RS", min_value=0, min_clamped=True, width=100, default_value=0)
