@@ -74,7 +74,7 @@ with dpg.window(label="Input", tag="INP", width=250, height=440, no_resize=True,
     dpg.add_spacer()
 
     # Water Input
-    dpg.add_input_int(label="Resevoir Size", tag="RS", min_value=0, min_clamped=True, width=100, default_value=0)
+    dpg.add_input_int(label="Resevoir Size (L)", tag="RS", min_value=0, min_clamped=True, width=100, default_value=0)
     dpg.add_input_float(label= "Target (EC)", tag="TEC", min_value = 0, min_clamped=True, format="%.1f", width=100, default_value=0)
     dpg.add_input_float(label= "Base (EC)", tag="BEC", min_value = 0, min_clamped=True, format="%.1f", width=100, default_value=0)
     dpg.add_combo(items=list(water_type_dict.keys()), label="Water Type", width=100, callback=setWaterValues)
